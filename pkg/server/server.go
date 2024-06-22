@@ -72,4 +72,5 @@ func newServerHelper(ctx context.Context, envs *types.Config, mongoClient *mongo
 func render(router *mux.Router, templQueries client.Querier, fileServer func() http.Handler) {
 	router.PathPrefix("/public/").Handler(fileServer())
 	router.HandleFunc("/", internal.HandleFuncDecorator(templQueries.RenderHomePageHandler))
+	router.HandleFunc("/about", internal.HandleFuncDecorator(templQueries.RenderAboutPageHandler))
 }

@@ -9,6 +9,7 @@ import (
 
 type Querier interface {
 	RenderHomePageHandler(ctx context.Context, w http.ResponseWriter, r *http.Request) error
+	RenderAboutPageHandler(ctx context.Context, w http.ResponseWriter, r *http.Request) error
 }
 
 type Templates struct {
@@ -26,7 +27,7 @@ func wrietWebPage(tmpl *template.Template, w http.ResponseWriter, name string, v
 	// set cookies && sessions
 	err := tmpl.ExecuteTemplate(w, name, vars)
 	if err != nil {
-		http.Error(w, "Failed to load template: "+err.Error(), http.StatusInternalServerError)
+		http.Error(w, "failed to load "+err.Error(), http.StatusInternalServerError)
 		return err
 	}
 	return nil

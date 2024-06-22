@@ -1,3 +1,4 @@
+{{define "base"}}
 <!doctype html>
 <html lang="en">
 
@@ -12,18 +13,17 @@
 </head>
 
 <body>
-  <!-- header absolute inset-x-0 top-0 z-50 -->
   <header class="" id="header">
-    {{template "notification" .}}
-    {{template "navigation" .}}
+    {{template "notification_component" .}}
+    {{template "navigation_component" .}}
   </header>
+
   <main class="" id="main">
-    {{template "heros" .}}
-    {{template "products" .}}
-    {{template "info_home".}}
-    {{template "features" .}}
-    {{template "about" .}}
+    {{block "content" .}}{{end}}
   </main>
+
+  <footer class="">FOOTER</footer>
 </body>
 
 </html>
+{{end}}
